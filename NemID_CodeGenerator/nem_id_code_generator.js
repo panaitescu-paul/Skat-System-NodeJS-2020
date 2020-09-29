@@ -17,23 +17,37 @@ app.post("/nemid-auth", (req, res) => {
     console.log("Body: ", req.body);
     let nemIdCode = req.body.nemIdCode;
     let nemId = req.body.nemId;
+    let randomSixDigitNumber;
     let sql = `SELECT * FROM user`;
-    // TODO:
-    // check last 4 digits of cpr from one of the database to match with nemIdCode from the request body
-    // check that on of the nemId from the database matches the one from the request body
+    let userFound = false;
     db.all(sql, [], (err, rows) => {
         if (err) {
             return console.log(err);
         }
         rows.forEach((row) => {
             console.log("User:", row);
-            console.log("CPR:", row.CPR);
             console.log("NemIdCode:", row.CPR.slice(-4));
             console.log("NemId:", row.NemID);
-            // if (nemIdCode === row.CPR && nemId === row.NemID) {
-            //
-            // }
+            if (nemIdCode === row.CPR.slice(-4) && nemId === row.NemID) {
+                userFound = true;
+            }
         });
+
+        if (userFound) {
+            // generate random 6 digits
+            randomSixDigitNumber = Math.floor(100000 + Math.random() * 900000);
+            console.log("Random number: ", randomSixDigitNumber);
+            res.json({
+                status: 200,
+                message: 'Successful!',
+                generatedCode: randomSixDigitNumber
+            });
+        } else {
+            res.json({
+                status: 403,
+                message: 'Forbidden!'
+            });
+        }
     });
 
 });
