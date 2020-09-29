@@ -14,7 +14,7 @@ let db = new sqlite3.Database('../NemID_ESB/nem_id_database.sqlite', (err) => {
 });
 
 app.post("/nemid-auth", (req, res) => {
-    console.log("Body: ", req.body);
+    console.log("Body:", req.body);
     let nemIdCode = req.body.nemIdCode;
     let nemId = req.body.nemId;
     let randomSixDigitNumber;
@@ -39,13 +39,13 @@ app.post("/nemid-auth", (req, res) => {
             console.log("Random number: ", randomSixDigitNumber);
             res.json({
                 status: 200,
-                message: 'Successful!',
+                message: "Successful!",
                 generatedCode: randomSixDigitNumber
             });
         } else {
             res.json({
                 status: 403,
-                message: 'Forbidden!'
+                message: "Forbidden!"
             });
         }
     });
