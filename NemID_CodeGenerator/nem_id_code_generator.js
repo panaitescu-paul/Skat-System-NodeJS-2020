@@ -5,6 +5,7 @@ let app = express();
 
 app.use(express.json());
 
+// Topic 6. NemID Code Generator
 let db = new sqlite3.Database('../NemID_ESB/nem_id_database.sqlite', (err) => {
     if(err) {
         console.log("Database connection failed");
