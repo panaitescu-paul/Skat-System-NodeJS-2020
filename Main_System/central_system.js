@@ -1,6 +1,7 @@
 const csv = require('csv-parser');
 const fs = require('fs');
 const builder = require('xmlbuilder');
+const axios = require('axios');
 
 let people = [];
 let cpr;
@@ -27,8 +28,16 @@ fs.createReadStream( 'people.csv' )
         root.ele('LastName', row.LastName);
         root.ele('CprNumber', cpr);
         root.ele('Email', row.Email);
-        let xml = root.end({ pretty: true});
-        console.log(xml);
+        let xmlBody = root.end({ pretty: true});
+        console.log(xmlBody);
+
+        axios.post('http://localhost:8080/nemID ', xmlBody)
+        .then((response) => {
+                console.log(response.nemID);
+        })
+        .catch((error) => {
+                console.log(error);
+        });
     })
     .on( 'end', () => {
 
