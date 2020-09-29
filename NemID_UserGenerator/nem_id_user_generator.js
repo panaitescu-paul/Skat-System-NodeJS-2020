@@ -11,10 +11,10 @@ app.post("/generate-nemID", (req, res) => {
     let email = req.body.email;
     let randomFiveDigitNumber = Math.floor(10000 + Math.random() * 90000);
     let nemId = randomFiveDigitNumber + cpr.slice(-4);
-    console.log("cpr", cpr);
-    console.log("email", email);
-    console.log("randomFiveDigitNumber", randomFiveDigitNumber);
-    console.log("nemId", nemId);
+    console.log("Cpr:", cpr);
+    console.log("Email:", email);
+    console.log("RandomFiveDigitNumber:", randomFiveDigitNumber);
+    console.log("NemId:", nemId);
 
     res.json({
         status: 201,

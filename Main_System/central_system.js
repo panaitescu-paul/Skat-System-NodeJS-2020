@@ -23,10 +23,14 @@ fs.createReadStream( 'people.csv' )
         let xmlBody = root.end({ pretty: true});
         console.log(xmlBody);
 
+        const config = {
+                headers: {'Content-Type': 'text/xml'}
+        };
+
         // Send a POST request
-        axios.post('http://localhost:8080/nemID ', xmlBody)
-        .then((response) => {
-                console.log(response.nemID);
+        axios.post('http://localhost:8080/nemID', xmlBody, config)
+        .then( (response) => {
+                console.log("NemID:", response.data.nemID);
                 let person = {
                         f_name: row.FirstName,
                         l_name: row.LastName,
@@ -36,12 +40,13 @@ fs.createReadStream( 'people.csv' )
                         phone: row.Phone,
                         address: row.Address,
                         CPR: cpr,
-                        NemID: response.nemID
+                        NemID: response.data.nemID
                 };
                 let people = msgpack.pack(person);
-                fs.writeFileSync(`${cpr}.msgpack`, people);
+                fs.writeFileSync(`msgpack/${cpr}.msgpack`, people);
         })
         .catch((error) => {
                 console.log(error);
         });
+
     });
