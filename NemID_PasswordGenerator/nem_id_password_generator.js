@@ -4,7 +4,7 @@ let app = express();
 
 app.use(express.json());
 
-// Topic 5: NemID Password Generator:
+// Topic 5: NemID Password Generator
 app.post("/generate-password-nemID", (req, res) => {
     console.log("Body:", req.body);
     let nemId = req.body.nemId;
