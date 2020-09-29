@@ -16,7 +16,6 @@ app.get('/test', (req, res) =>{
     res.status(200).send({message: "Server is running just fine on port 8080... "})
 });
 
-
 app.post('/nemId', xmlparser({trim: false, explicitArray: false}), async(req, res, next) =>{
     let cpr = req.body.person.cprnumber[0];
     let email = req.body.person.email[0];
@@ -44,7 +43,6 @@ app.post('/nemId', xmlparser({trim: false, explicitArray: false}), async(req, re
     });
 });
 
-
 app.post('/generate-auth-code', async (req, res) =>{
     let data = req.body;
     axios.post('http://localhost:8090/nemid-auth', data).then(response =>{
@@ -57,7 +55,6 @@ app.post('/generate-auth-code', async (req, res) =>{
     });
 });
 
-
 app.patch('/change-nemId-password', (req, res) => {
     let data = req.body;
     let query = "UPDATE user SET Password = ? WHERE CPR = ?";
@@ -69,8 +66,6 @@ app.patch('/change-nemId-password', (req, res) => {
     });
     return res.status(204).send();
 });
-
-
 
 app.listen(8080, (err) => {
     if(err){

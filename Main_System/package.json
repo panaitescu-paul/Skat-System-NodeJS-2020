@@ -8,5 +8,8 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.20.0",
+    "csv-parser": "^2.3.3"
+  }
 }

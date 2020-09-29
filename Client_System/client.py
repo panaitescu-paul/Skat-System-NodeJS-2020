@@ -1,4 +1,3 @@
-# test
 from person import Person
 import pandas as pd
 import csv
@@ -12,7 +11,6 @@ def validate_input(inp):
     else:
         return False
 
-
 peopleToAdd= []
 
 def add_people(f_name, l_name, email, phone, date_of_birth, address, country):
@@ -21,8 +19,6 @@ def add_people(f_name, l_name, email, phone, date_of_birth, address, country):
     p.validate_date_of_birth()
     p.is_valid()
     peopleToAdd.append(p)
-
-
 
 print("Welcome to this registration client CLI!")
 
@@ -47,6 +43,3 @@ while True:
             for p in peopleToAdd:
                 writer.writerow([p.FirstName, p.LastName, p.Email, p.DateOfBirth, p.Phone, p.Address, p.Country])
         break
-
-
-
