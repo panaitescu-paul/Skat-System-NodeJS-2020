@@ -1,5 +1,5 @@
 // Using the ESB-light-node package is not sustainable when connecting to different sources.
-// It seems that there are some concurency issues. So I will mock this instead
+// It seems that there are some concurrency issues. So I will mock this instead
 
 const express = require('express');
 const sqlite3 = require('sqlite3');
