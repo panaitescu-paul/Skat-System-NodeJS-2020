@@ -2,6 +2,7 @@ const csv = require('csv-parser');
 const fs = require('fs');
 const builder = require('xmlbuilder');
 const axios = require('axios');
+const msgpack = require("msgpack");
 
 let people = [];
 let cpr;
@@ -38,6 +39,15 @@ fs.createReadStream( 'people.csv' )
         .catch((error) => {
                 console.log(error);
         });
+
+        // let movies = msgpack.pack(body);
+        // fs.writeFileSync("movies.msgpack", movies);
+        // function readMsgFile() {
+        //     let data = fs.readFileSync('movies.msgpack');
+        //     let movies = msgpack.unpack(data);
+        //     console.log("Read:", movies);
+        // }
+
     })
     .on( 'end', () => {
 
