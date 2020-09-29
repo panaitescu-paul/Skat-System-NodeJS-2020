@@ -17,9 +17,7 @@ class Person:
         except:
             raise ValueError("Incorrect data format...")
 
-    
     def is_valid(self):
         if self.FirstName == "" or self.LastName == "" or self.Email == "" or self.Address == "" or self.Phone == "" or self.Country == "" or self.DateOfBirth == "" :
             raise ValueError
         return True
-        
