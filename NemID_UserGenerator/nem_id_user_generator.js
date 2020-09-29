@@ -1,5 +1,4 @@
 const express = require('express');
-// const sqlite3 = require('sqlite3');
 const PORT = 8088;
 let app = express();
 
