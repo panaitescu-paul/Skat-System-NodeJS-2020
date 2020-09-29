@@ -50,7 +50,6 @@ app.post("/nemid-auth", (req, res) => {
             });
         }
     });
-
 });
 
 app.listen(PORT, (err) => {

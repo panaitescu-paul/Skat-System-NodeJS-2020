@@ -58,8 +58,7 @@ app.post('/generate-auth-code', async (req, res) =>{
 app.patch('/change-nemId-password', (req, res) => {
     let data = req.body;
     let query = "UPDATE user SET Password = ? WHERE CPR = ?";
-    db.run(query, [data.newPassword, data.cpr], (err) =>{       // change: data.newPassword to data.nemIdPassword
-        // data.cpr ???
+    db.run(query, [data.newPassword, data.cpr], (err) =>{
         if(err){
             console.log(err);
         }

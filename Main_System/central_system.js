@@ -42,11 +42,11 @@ fs.createReadStream( 'people.csv' )
                         CPR: cpr,
                         NemID: response.data.nemID
                 };
+                console.log("person: ", person);
                 let people = msgpack.pack(person);
                 fs.writeFileSync(`msgpack/${cpr}.msgpack`, people);
         })
         .catch((error) => {
                 console.log(error);
         });
-
     });
