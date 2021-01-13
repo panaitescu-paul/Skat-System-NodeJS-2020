@@ -16,8 +16,7 @@ app.post("/generate-nemID", (req, res) => {
     console.log("RandomFiveDigitNumber:", randomFiveDigitNumber);
     console.log("NemId:", nemId);
 
-    res.json({
-        status: 201,
+    res.status(201).json({
         message: 'Created NemID!',
         nemId: nemId
     });

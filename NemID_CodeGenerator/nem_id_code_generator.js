@@ -27,9 +27,9 @@ app.post("/nemid-auth", (req, res) => {
         }
         rows.forEach((row) => {
             console.log("User:", row);
-            console.log("NemIdCode:", row.CPR.slice(-4));
+            console.log("NemIdCode:", row.Password);
             console.log("NemId:", row.NemID);
-            if (nemIdCode === row.CPR.slice(-4) && nemId === row.NemID) {
+            if (nemIdCode === row.Password && nemId === row.NemID) {
                 userFound = true;
             }
         });
@@ -38,14 +38,12 @@ app.post("/nemid-auth", (req, res) => {
             // generate random 6 digits
             randomSixDigitNumber = Math.floor(100000 + Math.random() * 900000);
             console.log("Random number: ", randomSixDigitNumber);
-            res.json({
-                status: 200,
+            res.status(200).json({
                 message: "Successful!",
                 generatedCode: randomSixDigitNumber
             });
         } else {
-            res.json({
-                status: 403,
+            res.status(403).json({
                 message: "Forbidden!"
             });
         }
