@@ -12,9 +12,7 @@ app.post("/generate-password-nemID", (req, res) => {
     let password = nemId.slice(0, 2) + cpr.slice(-2);
 
     console.log("Password:", password);
-    res.json({
-        status: 200,
-        message: "Successful!",
+    res.status(200).json({
         nemIdPassword: password
     });
 });

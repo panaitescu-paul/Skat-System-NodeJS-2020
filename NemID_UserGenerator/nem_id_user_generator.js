@@ -17,7 +17,6 @@ app.post("/generate-nemID", (req, res) => {
     console.log("NemId:", nemId);
 
     res.status(201).json({
-        message: 'Created NemID!',
         nemId: nemId
     });
 });

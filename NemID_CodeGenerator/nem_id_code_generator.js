@@ -39,7 +39,6 @@ app.post("/nemid-auth", (req, res) => {
             randomSixDigitNumber = Math.floor(100000 + Math.random() * 900000);
             console.log("Random number: ", randomSixDigitNumber);
             res.status(200).json({
-                message: "Successful!",
                 generatedCode: randomSixDigitNumber
             });
         } else {
